@@ -512,6 +512,7 @@ def _signal_dataset_saved(sender, old, new):
     if projects.dataset.is_sourced:
         cls = new.__class__.__name__.lower()
         import bw2data.backends.utils
+        from deepdiff.serialization import json_dumps
 
         mapper = getattr(bw2data.backends.utils, f"dict_as_{cls}")
         serializer = lambda x: json.dumps(x, indent=2)
